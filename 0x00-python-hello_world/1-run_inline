@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "$PYCODE" | python3 -c "$(cat)"
+echo "$PYCODE" | python3 -c "$PYCODE"
 
 
 
