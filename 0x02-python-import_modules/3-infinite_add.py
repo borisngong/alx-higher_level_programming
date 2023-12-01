@@ -3,6 +3,6 @@ import sys
 from decimal import Decimal
 
 if __name__ == "__main__":
-    arguments = sys.argv[1:]
-    result = sum(Decimal(arg) for arg in arguments)
-    print(result)
+    argument_passed = sys.argv[1:]
+    argument_solution = sum(Decimal(argn) for argn in argument_passed)
+    print(argument_solution)
