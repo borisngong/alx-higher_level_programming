@@ -10,5 +10,4 @@ def best_score(a_dictionary):
         if isinstance(value, int) and value > max_score:
             max_score = value
             best_key = key
-    
     return best_key
