@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""A module for working with squares"""
+
+
 class Square:
-    def __init__(self):
-        pass
+    """A class representing a square"""
+    pass
