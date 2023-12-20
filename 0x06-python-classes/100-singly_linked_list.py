@@ -7,7 +7,8 @@ class Node:
 
     Attributes:
         __data (int): The data stored in the node.
-        __next_node (Node): The reference to the next node in the linked list.
+        __next_node (Node): The reference to the next node in
+        the linked list.
 
     Raises:
         TypeError: If the provided data or next_node is invalid.
@@ -18,10 +19,12 @@ class Node:
 
         Args:
             data (int): The data to be stored in the node.
-            next_node (Node, optional): The reference to the next node. Defaults to None.
+            next_node (Node, optional): The reference to the next node.
+            Defaults to None.
 
         Raises:
-            TypeError: If the provided data is not an integer or if the next_node is not a Node object.
+            TypeError: If the provided data is not an integer or if the
+            next_node is not a Node object.
         """
         self.data = data
         self.next_node = next_node
@@ -85,7 +88,8 @@ class SinglyLinkedList:
         self.head = None
 
     def sorted_insert(self, value):
-        """Insert a new node into the correct sorted position in the linked list (in increasing order).
+        """Insert a new node into the correct sorted position in the
+        linked list (in increasing order).
 
         Args:
             value (int): The value to be stored in the new node.
