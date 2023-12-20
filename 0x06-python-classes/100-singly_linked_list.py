@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+"""Modul for working nodes"""
+
+
 class Node:
     """A class representing a node of a singly linked list.
 
