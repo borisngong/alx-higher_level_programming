@@ -1,4 +1,4 @@
-
+# 0-add_integer.txt
 
 
 ===========================
@@ -31,6 +31,7 @@ that value is equivalent to using the ``+`` operator.
     >>> add_integer(2, -3)
     -1
 
+
 The function also works with floating-point values.
 
 
@@ -39,6 +40,9 @@ The function also works with floating-point values.
 
     >>> add_integer(2.0, 3.0)
     5
+
+
+Note that floats are casted to ints before addition is performed.
 
 
 ::
@@ -75,20 +79,28 @@ The second argument is optional - by default, it is 98.
     100
 
 
+Non-Numbers
+===========
+
+
+``add_integer()`` expects that both arguments are either integers or floats.
+If either argument is a non-integer and non-float, a TypeError is raised:
+
+
 ::
 
 
->>> add_integer("hello", 3)
-Traceback (most recent call last):
-TypeError: a must be an integer
+    >>> add_integer("hello", 3)
+    Traceback (most recent call last):
+    TypeError: a must be an integer
 
 
 ::
 
 
->>> add_integer(2, "hello")
-Traceback (most recent call last):
-TypeError: b must be an integer
+    >>> add_integer(2, "hello")
+    Traceback (most recent call last):
+    TypeError: b must be an integer
 
 
 ::
@@ -156,3 +168,4 @@ And again with NaN numbers.
     >>> add_integer(2, float('nan'))
     Traceback (most recent call last):
     ValueError: cannot convert float NaN to integer
+    
