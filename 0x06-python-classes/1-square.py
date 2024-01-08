@@ -7,6 +7,7 @@ class Square:
 
     This class provides methods and attributes to work with square objects.
     """
+    
 
     def __init__(self, size):
         """Initialize a square object.
