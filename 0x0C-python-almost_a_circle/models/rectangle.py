@@ -8,7 +8,7 @@ class Rectangle(Base):
 
     def __init__(self, width, height, x=0, y=0, id=None):
         """Class constructor: Initializes attributes width, height, x, y"""
-        super().__init__(id)
+        super().__init__()
         self.width = width
         self.height = height
         self.x = x
