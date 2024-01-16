@@ -4,10 +4,11 @@ from models.base import Base
 
 
 class Rectangle(Base):
-    """Class Rectangle inheriting from Base"""
+    """Rectangle class that inherits from Base"""
 
-    def __init__(self, width, height, x=0, y=0):
-        """Class constructor: Initializes attributes width, height, x, y"""
+    def __init__(self, width, height, x=0, y=0, id=None):
+        """Class constructor: initializes width, height, x, and y attributes."""
+        super().__init__(id)
         self.width = width
         self.height = height
         self.x = x
@@ -22,7 +23,7 @@ class Rectangle(Base):
     def width(self, value):
         """Setter for width attribute."""
         if not isinstance(value, int):
-            raise ValueError("width must be an integer")
+            raise TypeError("width must be an integer")
         if value <= 0:
             raise ValueError("width must be > 0")
         self.__width = value
@@ -36,7 +37,7 @@ class Rectangle(Base):
     def height(self, value):
         """Setter for height attribute."""
         if not isinstance(value, int):
-            raise ValueError("height must be an integer")
+            raise TypeError("height must be an integer")
         if value <= 0:
             raise ValueError("height must be > 0")
         self.__height = value
@@ -50,7 +51,7 @@ class Rectangle(Base):
     def x(self, value):
         """Setter for x attribute."""
         if not isinstance(value, int):
-            raise ValueError("x must be an integer")
+            raise TypeError("x must be an integer")
         if value < 0:
             raise ValueError("x must be >= 0")
         self.__x = value
@@ -64,7 +65,7 @@ class Rectangle(Base):
     def y(self, value):
         """Setter for y attribute."""
         if not isinstance(value, int):
-            raise ValueError("y must be an integer")
+            raise TypeError("y must be an integer")
         if value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
