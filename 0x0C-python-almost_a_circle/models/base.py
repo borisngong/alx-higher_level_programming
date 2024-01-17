@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Module for working with the base class"""
 import json
+import csv
 
 
 class Base:
@@ -73,3 +74,21 @@ class Base:
                 return list_instances
         except FileNotFoundError:
             return []
+
+    def save_to_file_csv(cls, list_objs):
+        """CSV serialization of object lists to a file"""
+        file_name = {}.json.format(cls.__name__)
+        with open(file_name, "w") as csvfile:
+            if list_objs is None or list_objs == []:
+                csvfile.write("[]")
+            else:
+                if cls.__name__ == "Rectangle":
+                    name_of_fields = ["id", "width", "height", "x", "y"]
+                else:
+                    name_of_fields = ["id", "size", "x", "y"]
+                    writer = csv.DictWriter(
+                        csvfile,
+                        fieldnames=name_of_fields
+                    )
+            for obj in list_objs:
+                writer.writerow(obj.to_dictionary())
