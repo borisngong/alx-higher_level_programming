@@ -78,7 +78,7 @@ class Base:
     @classmethod
     def save_to_file_csv(cls, list_objs):
         """Serializes list_objs to a CSV file"""
-        file_name = "{}.json".format(cls.__name__)
+        file_name = "{}.csv".format(cls.__name__)
         with open(file_name, "w", newline="") as csv_file:
             if list_objs is None or not list_objs:
                 csv_file.write("[]")
@@ -95,7 +95,7 @@ class Base:
     @classmethod
     def load_from_file_csv(cls):
         """Deserializes instances from a CSV file"""
-        file_name = "{}.json".format(cls.__name__)
+        file_name = "{}.csv".format(cls.__name__)
         try:
             with open(file_name, "r", newline="") as csv_file:
                 if cls.__name__ == "Rectangle":
@@ -103,7 +103,7 @@ class Base:
                 else:
                     field_names = ["id", "size", "x", "y"]
                 list_dict = csv.DictReader(csv_file, fieldnames=field_names)
-                next(list_dict)  # Skip the header row
+                next(list_dict)
 
                 list_of_instances = []
                 for row in list_dict:
