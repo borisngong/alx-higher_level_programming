@@ -75,20 +75,42 @@ class Base:
         except FileNotFoundError:
             return []
 
+    @classmethod
     def save_to_file_csv(cls, list_objs):
-        """CSV serialization of object lists to a file"""
-        file_name = {}.json.format(cls.__name__)
-        with open(file_name, "w") as csvfile:
-            if list_objs is None or list_objs == []:
-                csvfile.write("[]")
+        """Serializes list_objs to a CSV file"""
+        file_name = "{}.json".format(cls.__name__)
+        with open(file_name, "w", newline="") as csv_file:
+            if list_objs is None or not list_objs:
+                csv_file.write("[]")
             else:
                 if cls.__name__ == "Rectangle":
-                    name_of_fields = ["id", "width", "height", "x", "y"]
+                    field_names = ["id", "width", "height", "x", "y"]
                 else:
-                    name_of_fields = ["id", "size", "x", "y"]
-                    writer = csv.DictWriter(
-                        csvfile,
-                        fieldnames=name_of_fields
-                    )
-            for obj in list_objs:
-                writer.writerow(obj.to_dictionary())
+                    field_names = ["id", "size", "x", "y"]
+                writer = csv.DictWriter(csv_file, fieldnames=field_names)
+                writer.writeheader()
+                for obj in list_objs:
+                    writer.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Deserializes instances from a CSV file"""
+        file_name = "{}.json".format(cls.__name__)
+        try:
+            with open(file_name, "r", newline="") as csv_file:
+                if cls.__name__ == "Rectangle":
+                    field_names = ["id", "width", "height", "x", "y"]
+                else:
+                    field_names = ["id", "size", "x", "y"]
+                list_dict = csv.DictReader(csv_file, fieldnames=field_names)
+                next(list_dict)  # Skip the header row
+
+                list_of_instances = []
+                for row in list_dict:
+                    converted_dict = {}
+                    for key, value in row.items():
+                        converted_dict[key] = int(value)
+                    list_of_instances.append(cls.create(**converted_dict))
+                return list_of_instances
+        except FileNotFoundError:
+            return []
