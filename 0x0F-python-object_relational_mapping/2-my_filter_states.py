@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" 
+"""
 Lists all states from the hbtn_0e_0_usa database that match a given name.
 """
 import MySQLdb
