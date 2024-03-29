@@ -7,9 +7,9 @@ the response
 import urllib.request
 import sys
 
-first_command = sys.argv[1]
+first_command_arg = sys.argv[1]
 
 if __name__ == "__main__":
-    with urllib.request.urlopen(first_command) as response:
+    with urllib.request.urlopen(first_command_arg) as response:
         html = response.info()
         print(html.get('X-Request-Id'))
