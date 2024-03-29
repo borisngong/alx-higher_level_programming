@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
- Python script responsible for taking your GitHub credentials (username and password)
+ Python script responsible for taking your GitHub credentials
  and uses the GitHub API to display your id
 """
 from requests import get, auth
