@@ -1,3 +1,5 @@
+#!/usr/bin/node
+
 // Import the native Node.js 'fs' module
 const fs = require('fs');
 
